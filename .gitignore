@@ -1,0 +1,19 @@
+# dependencies
+/node_modules
+
+# ide
+.idea
+.vscode
+.fleet
+
+# testing
+/coverage
+
+# production
+/build
+/dist
+
+# misc
+.DS_Store
+.env.local
+.env.test.local
