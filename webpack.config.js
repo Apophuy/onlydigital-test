@@ -22,17 +22,23 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.(s[ac]|c)ss$/i,
+        test: /\.((c|sa|sc)ss)$/i,
         use: [
-          MiniCssExtractPlugin.loader,
+          {
+            loader: devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          },
           {
             loader: 'css-loader',
             options: {
               esModule: true,
               modules: {
-                localIdentName: '[name]__[local]__[hash:base64:5]',
+                localIdentName: devMode
+                  ? '[local]__[hash:base64:5]'
+                  : '[name]__[local]__[hash:base64:5]',
                 namedExport: false,
+                exportLocalsConvention: 'as-is',
               },
+              importLoaders: 3,
             },
           },
           {
@@ -41,6 +47,13 @@ module.exports = {
               postcssOptions: {
                 plugins: [['postcss-preset-env']],
               },
+            },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+              implementation: require('sass'),
             },
           },
         ],
@@ -72,6 +85,7 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: devMode ? '[name].css' : '[name].[contenthash].css',
+      chunkFilename: '[id].css',
       linkType: 'text/css',
     }),
   ],
