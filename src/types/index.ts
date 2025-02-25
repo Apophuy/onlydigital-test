@@ -6,9 +6,12 @@ export type TUseWindowSize = {
   isMobile: boolean;
 };
 
-export type TTimeInterval = {
+export type TTestData = {
+  id: string;
   startYear: number;
   endYear: number;
+  field: Fields;
+  events: TEvent[];
 };
 
 export enum Fields {
@@ -20,8 +23,8 @@ export enum Fields {
   technology = 'technology',
 }
 
-export type TTestData = {
+export type TEvent = {
+  eventId: string;
   year: number;
-  fields: Fields;
   event: string;
 };

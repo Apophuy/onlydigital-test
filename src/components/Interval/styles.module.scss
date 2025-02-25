@@ -1,0 +1,27 @@
+.interval {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  padding-bottom: 57px;
+  border-bottom: 1px solid #c7cdd9;
+
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 76.46px;
+
+  &__start {
+    color: #3877ee;
+  }
+
+  &__end {
+    color: #f178b6;
+  }
+
+  @media (width >= 960px) {
+    border-bottom: none;
+    font-size: 200px;
+    line-height: 160px;
+  }
+}

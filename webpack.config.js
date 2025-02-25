@@ -5,6 +5,7 @@ const devMode = process.env.NODE_ENV !== 'production';
 
 const BUILD_DIR = path.resolve(__dirname, 'build');
 const PUBLIC_DIR = path.resolve(__dirname, 'public');
+const SRC_DIR = path.resolve(__dirname, 'src');
 
 module.exports = {
   entry: path.resolve(__dirname, 'src', 'index.tsx'),
@@ -90,7 +91,7 @@ module.exports = {
     }),
   ],
   devServer: {
-    static: BUILD_DIR,
+    static: SRC_DIR,
     port: 3000,
     hot: 'only',
     compress: true,
