@@ -2,11 +2,7 @@ import { FC } from 'react';
 
 import styles from './styles.module.scss';
 
-type Props = {
-  isMobile?: boolean;
-};
-
-const Title: FC<Props> = ({ isMobile }) => {
+const Title: FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.title__wrapper}>

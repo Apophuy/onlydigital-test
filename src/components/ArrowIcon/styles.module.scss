@@ -1,0 +1,15 @@
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__svg {
+    width: 3.12px;
+    height: 6.25px;
+
+    @media (width >= 960px) {
+      width: 10px;
+      height: 14px;
+    }
+  }
+}

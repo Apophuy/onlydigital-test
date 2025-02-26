@@ -2,7 +2,7 @@ import { Fields, TTestData } from '../types';
 
 export const testData: TTestData[] = [
   {
-    id: 'interval-1',
+    id: 1,
     startYear: 1971,
     endYear: 1986,
     field: Fields.movie,
@@ -44,7 +44,7 @@ export const testData: TTestData[] = [
     ],
   },
   {
-    id: 'interval-2',
+    id: 2,
     startYear: 1987,
     endYear: 1991,
     field: Fields.sport,
@@ -79,7 +79,7 @@ export const testData: TTestData[] = [
     ],
   },
   {
-    id: 'interval-3',
+    id: 3,
     startYear: 1992,
     endYear: 1997,
     field: Fields.music,
@@ -119,7 +119,7 @@ export const testData: TTestData[] = [
     ],
   },
   {
-    id: 'interval-4',
+    id: 4,
     startYear: 1998,
     endYear: 2004,
     field: Fields.literature,
@@ -155,7 +155,7 @@ export const testData: TTestData[] = [
     ],
   },
   {
-    id: 'interval-5',
+    id: 5,
     startYear: 2005,
     endYear: 2010,
     field: Fields.science,
@@ -197,7 +197,7 @@ export const testData: TTestData[] = [
     ],
   },
   {
-    id: 'interval-6',
+    id: 6,
     startYear: 2011,
     endYear: 2020,
     field: Fields.technology,
@@ -239,3 +239,5 @@ export const testData: TTestData[] = [
     ],
   },
 ];
+
+export const dataLength = testData.length;

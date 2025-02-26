@@ -1,11 +1,8 @@
 .interval {
   display: flex;
+  gap: 30px;
   align-items: center;
-  justify-content: space-between;
-
-  width: 100%;
-  padding-bottom: 57px;
-  border-bottom: 1px solid #c7cdd9;
+  justify-content: center;
 
   font-size: 56px;
   font-weight: 700;
@@ -20,7 +17,15 @@
   }
 
   @media (width >= 960px) {
-    border-bottom: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translate(20%, 50%);
+
+    gap: 100px;
+
+    margin: 0;
+
     font-size: 200px;
     line-height: 160px;
   }

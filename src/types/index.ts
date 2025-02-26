@@ -7,7 +7,7 @@ export type TUseWindowSize = {
 };
 
 export type TTestData = {
-  id: string;
+  id: number;
   startYear: number;
   endYear: number;
   field: Fields;
