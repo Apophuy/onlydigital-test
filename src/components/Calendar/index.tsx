@@ -1,4 +1,4 @@
-import { CSSProperties, FC, useMemo, useRef, useState } from 'react';
+import { CSSProperties, FC, useEffect, useMemo, useRef, useState } from 'react';
 // import { useWindowSize } from '../../utils/hooks';
 import styles from './styles.module.scss';
 import Title from '../Title';
@@ -7,8 +7,6 @@ import { gsap } from 'gsap';
 import { currentRotation } from '../../utils';
 import { dataLength, testData } from '../../utils/data';
 import IntervalControl from '../IntervalControl';
-import { fields2Ru } from '../../utils/constants';
-import cn from 'classnames';
 import Slider from '../Slider';
 import { useWindowSize } from '../../utils/hooks';
 import Dots from '../Dots';
@@ -39,6 +37,18 @@ const Calendar: FC = () => {
       });
     setCurrentIntervalIdx(dotNumber - 1);
   };
+
+  useEffect(() => {
+    return () => {
+      setCurrentIntervalIdx(0);
+      gsap.set(dotsRef.current, { clearProps: 'all' });
+      Object.values(dotRefs.current).forEach((dot) => {
+        gsap.set(dot, {
+          clearProps: 'all',
+        });
+      });
+    };
+  }, [isMobile]);
 
   const handleControlClick = (dir: 'left' | 'right') => {
     if (dir === 'left' && currentIntervalIdx === 0) {
