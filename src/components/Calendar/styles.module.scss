@@ -16,7 +16,7 @@
 
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(3, 1fr) 1fr;
+  grid-template-rows: 293px 1fr;
   flex: 1 1 auto;
 
   padding: 59px 20px 57px;
@@ -59,10 +59,12 @@
 
 .leftBottom {
   position: relative;
+  overflow: hidden;
   grid-column: 1 / 2;
   grid-row: 2 / 3;
 
   @media (width >= 960px) {
+    overflow: visible;
     border-right: 1px solid rgba(66, 86, 122, 10%);
   }
 }
@@ -73,136 +75,5 @@
     display: block;
     grid-column: 2 / 3;
     grid-row: 2 / 3;
-  }
-}
-
-.round {
-  display: none;
-  @media (width >= 960px) {
-    position: relative;
-    top: 0;
-    right: 0;
-    transform: translate(85%, -50%);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 530px;
-    height: 530px;
-    border: 1px solid #42567a;
-    border-radius: 50%;
-  }
-}
-
-.dots {
-  display: none;
-  @media (width >= 960px) {
-    position: relative;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 100%;
-    height: 100%;
-  }
-}
-
-@mixin dot-open {
-  cursor: pointer;
-
-  transform-origin: 290px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 56px;
-  height: 56px;
-  border: 1px solid #42567a;
-
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 1.5;
-
-  background-color: #f4f5f9;
-}
-
-.dot {
-  display: none;
-  @media (width >= 960px) {
-    position: absolute;
-    transform-origin: 268px;
-
-    display: flex;
-    gap: 20px;
-    align-items: center;
-
-    width: 9px;
-    height: 9px;
-    border: 5px solid transparent;
-    border-radius: 50%;
-
-    font-size: 0;
-
-    background-color: #42567a;
-
-    @for $i from 1 through 6 {
-      &:nth-child(#{$i}) {
-        transform: translateX(-263px) rotate(calc(360deg / 6 * ($i + 1)));
-
-        .dot__number {
-          transform: rotate(calc(-360deg / 6 * ($i + 1)));
-        }
-      }
-    }
-
-    &__field {
-      position: absolute;
-      transform: rotate(240deg) translateX(70px);
-
-      display: flex;
-      align-items: center;
-
-      width: 210px;
-      height: 40px;
-      padding-left: 90px;
-    }
-
-    &__text {
-      font-size: 20px;
-      font-weight: 700;
-      line-height: 30px;
-    }
-
-    &__inner {
-      position: absolute;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    &__active {
-      @include dot-open;
-    }
-
-    &:hover {
-      @include dot-open;
-
-      transition: all 300ms ease-out;
-    }
-  }
-}
-
-.slider {
-  grid-column: 1 / 2;
-  grid-row: 3 / 4;
-  background-color: #42567a;
-
-  @media (width >= 960px) {
-    position: absolute;
-    bottom: 0;
-    left: 0;
   }
 }

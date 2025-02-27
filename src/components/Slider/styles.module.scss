@@ -1,0 +1,22 @@
+.slider {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  @media (width >= 960px) {
+    position: absolute;
+    top: 370px;
+    left: 80px;
+  }
+}
+
+.events {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: 1px solid red;
+  @media (width >= 960px) {
+    align-items: center;
+    width: 1275px;
+  }
+}

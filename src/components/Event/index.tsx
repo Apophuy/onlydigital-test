@@ -3,11 +3,10 @@ import { TEvent } from '../../types';
 import styles from './styles.module.scss';
 
 type Props = {
-  isMobile?: boolean;
   event: TEvent;
 };
 
-const Event: FC<Props> = ({ isMobile, event }) => {
+const Event: FC<Props> = ({ event }) => {
   return (
     <div className={styles.event}>
       <span className={styles.event__year}>{event.year}</span>

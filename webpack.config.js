@@ -23,7 +23,12 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
+        test: /\.css$/,
+        use: [{ loader: devMode ? 'style-loader' : MiniCssExtractPlugin.loader }, 'css-loader'],
+      },
+      {
         test: /\.((c|sa|sc)ss)$/i,
+        exclude: /node_modules/,
         use: [
           {
             loader: devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
@@ -78,6 +83,7 @@ module.exports = {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.jsx'],
+    modules: [path.resolve(__dirname, 'src'), 'node_modules'],
   },
   plugins: [
     new HtmlWebpackPlugin({
