@@ -1,4 +1,4 @@
-import { CSSProperties, FC, useEffect, useMemo, useRef, useState } from 'react';
+import { FC, useEffect, useMemo, useRef, useState } from 'react';
 // import { useWindowSize } from '../../utils/hooks';
 import styles from './styles.module.scss';
 import Title from '../Title';
@@ -80,7 +80,6 @@ const Calendar: FC = () => {
         <div className={styles.leftTop}>
           <Title />
           <Interval data={currentInterval} />
-          {isMobile && <h3>{fields2Ru[currentInterval.field]}</h3>}
         </div>
         <div className={styles.rightTop} />
         <div className={styles.leftBottom}>
@@ -93,7 +92,11 @@ const Calendar: FC = () => {
             data={testData}
             showTitle={showTitle}
           />
-          <Slider events={currentInterval.events} isMobile={isMobile} />
+          <Slider
+            events={currentInterval.events}
+            isMobile={isMobile}
+            field={currentInterval.field}
+          />
           <IntervalControl
             currentIntervalIdx={currentIntervalIdx}
             handleClick={handleControlClick}

@@ -1,6 +1,6 @@
 import { FC, useRef, useState } from 'react';
 import styles from './styles.module.scss';
-import { TEvent } from '../../types';
+import { Fields, TEvent } from '../../types';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import { Swiper as SwiperType } from 'swiper';
@@ -10,13 +10,15 @@ import 'swiper/css/navigation';
 import 'swiper/css/a11y';
 import RoundedButton from '../RoundedButton';
 import cn from 'classnames';
+import { fields2Ru } from '../../utils/constants';
 
 type Props = {
   events: TEvent[];
   isMobile: boolean;
+  field: Fields;
 };
 
-const Slider: FC<Props> = ({ events, isMobile }) => {
+const Slider: FC<Props> = ({ events, isMobile, field }) => {
   const [currentIdx, setCurrentIdx] = useState(0);
   const swiperRef = useRef<SwiperType>(null);
 
@@ -29,6 +31,7 @@ const Slider: FC<Props> = ({ events, isMobile }) => {
 
   return (
     <div className={styles.slider}>
+      {isMobile && <h3 className={styles.field}>{fields2Ru[field]}</h3>}
       <RoundedButton
         dir='left'
         onClick={() => swiperRef.current?.slidePrev()}

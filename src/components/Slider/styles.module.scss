@@ -2,11 +2,13 @@
   position: relative;
   display: flex;
   align-items: center;
+  border-top: 1px solid #c7cdd9;
 
   @media (width >= 960px) {
     position: absolute;
     top: 370px;
     left: 40px;
+    border-top: none;
   }
 }
 
@@ -37,4 +39,10 @@
   width: 5px;
   height: 10px;
   stroke: rgba(56, 119, 238, 100%);
+}
+
+.field {
+  position: absolute;
+  top: -40px;
+  left: 0;
 }
