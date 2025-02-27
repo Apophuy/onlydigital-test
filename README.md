@@ -12,6 +12,7 @@
 **npm install** - установка зависимостей <br/>
 **npm run start** - запуск проекта <br/>
 **npm run build** - сборка проекта <br/>
+Можно проверить проект с помощью команды **npm run lint**
 
 ## TypeScript
 
