@@ -1,6 +1,7 @@
-import { FC } from 'react';
-import styles from './styles.module.scss';
 import cn from 'classnames';
+import { FC } from 'react';
+
+import styles from './styles.module.scss';
 
 type Props = {
   className?: string;

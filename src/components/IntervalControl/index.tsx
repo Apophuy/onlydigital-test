@@ -1,7 +1,8 @@
 import { FC } from 'react';
+
 import styles from './styles.module.scss';
+
 import { dataLength } from '../../utils/data';
-import ArrowIcon from '../ArrowIcon';
 import RoundedButton from '../RoundedButton';
 
 type Props = {

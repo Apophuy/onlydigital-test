@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+
 import { TUseWindowSize } from '../types';
 
 export function useWindowSize(): TUseWindowSize {

@@ -1,6 +1,8 @@
 import { FC } from 'react';
-import { TEvent } from '../../types';
+
 import styles from './styles.module.scss';
+
+import { TEvent } from '../../types';
 
 type Props = {
   event: TEvent;

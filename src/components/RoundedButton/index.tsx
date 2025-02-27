@@ -1,7 +1,9 @@
-import { FC } from 'react';
-import styles from './styles.module.scss';
-import ArrowIcon from '../ArrowIcon';
 import cn from 'classnames';
+import { FC } from 'react';
+
+import styles from './styles.module.scss';
+
+import ArrowIcon from '../ArrowIcon';
 
 type Props = {
   dir: 'left' | 'right';

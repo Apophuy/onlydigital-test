@@ -1,8 +1,10 @@
+import cn from 'classnames';
 import { FC } from 'react';
+
 import styles from './styles.module.scss';
+
 import { TTestData } from '../../types';
 import { fields2Ru } from '../../utils/constants';
-import cn from 'classnames';
 
 type Props = {
   dotsRef: React.RefObject<HTMLDivElement | null>;

@@ -1,16 +1,16 @@
-import { FC, useEffect, useMemo, useRef, useState } from 'react';
-// import { useWindowSize } from '../../utils/hooks';
-import styles from './styles.module.scss';
-import Title from '../Title';
-import Interval from '../Interval';
 import { gsap } from 'gsap';
+import { FC, useEffect, useMemo, useRef, useState } from 'react';
+
+import styles from './styles.module.scss';
+
 import { currentRotation } from '../../utils';
 import { dataLength, testData } from '../../utils/data';
-import IntervalControl from '../IntervalControl';
-import Slider from '../Slider';
 import { useWindowSize } from '../../utils/hooks';
 import Dots from '../Dots';
-import { fields2Ru } from '../../utils/constants';
+import Interval from '../Interval';
+import IntervalControl from '../IntervalControl';
+import Slider from '../Slider';
+import Title from '../Title';
 
 const Calendar: FC = () => {
   const { isMobile } = useWindowSize();
@@ -33,7 +33,7 @@ const Calendar: FC = () => {
     },
   });
 
-  const handleClick = (dotNumber: number) => {
+  const handleClick = (dotNumber: number): void => {
     !isMobile &&
       tl.to(dotsRef.current, {
         rotationZ: currentRotation(dotNumber, 'round'),
@@ -50,7 +50,7 @@ const Calendar: FC = () => {
   };
 
   useEffect(() => {
-    return () => {
+    return (): void => {
       setCurrentIntervalIdx(0);
       tl.set(dotsRef.current, { clearProps: 'all' });
       Object.values(dotRefs.current).forEach((dot) => {

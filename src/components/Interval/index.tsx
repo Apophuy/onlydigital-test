@@ -1,7 +1,9 @@
-import { FC, useEffect, useRef, useState } from 'react';
-import styles from './styles.module.scss';
-import { TTestData } from '../../types';
 import { gsap } from 'gsap';
+import { FC, useEffect, useRef, useState } from 'react';
+
+import styles from './styles.module.scss';
+
+import { TTestData } from '../../types';
 
 type Props = {
   data: TTestData;

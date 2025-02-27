@@ -1,17 +1,21 @@
+import cn from 'classnames';
+import { gsap } from 'gsap';
 import { FC, useEffect, useRef, useState } from 'react';
-import styles from './styles.module.scss';
-import { Fields, TEvent } from '../../types';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
+
 import { Swiper as SwiperType } from 'swiper';
+import { Navigation } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+import styles from './styles.module.scss';
+
+import { Fields, TEvent } from '../../types';
+
+import { fields2Ru } from '../../utils/constants';
 import Event from '../Event';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/a11y';
 import RoundedButton from '../RoundedButton';
-import cn from 'classnames';
-import { fields2Ru } from '../../utils/constants';
-import { gsap } from 'gsap';
 
 type Props = {
   events: TEvent[];
@@ -24,7 +28,7 @@ const Slider: FC<Props> = ({ events, isMobile, field }) => {
   const swiperRef = useRef<SwiperType>(null);
   const sliderRef = useRef<HTMLDivElement>(null);
 
-  const updateIndex = (swiper: SwiperType) => {
+  const updateIndex = (swiper: SwiperType): void => {
     if (!swiper) return;
     setCurrentIdx(swiper.activeIndex);
   };

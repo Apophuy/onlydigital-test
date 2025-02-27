@@ -1,4 +1,8 @@
-export const currentRotation = (dotNumber: number, type: 'round' | 'text', currentDot = 0) => {
+export const currentRotation = (
+  dotNumber: number,
+  type: 'round' | 'text',
+  currentDot = 0
+): number => {
   switch (dotNumber) {
     case 1:
       if (type === 'round') return 0;
