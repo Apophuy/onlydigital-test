@@ -24,7 +24,7 @@
   @media (width >= 960px) {
     display: grid;
     grid-template-columns: repeat(2, minmax(720px, 1fr));
-    grid-template-rows: minmax(480px, 1fr) minmax(600px, 1fr);
+    grid-template-rows: 480px minmax(600px, 1fr);
     justify-content: center;
 
     min-height: 100%;

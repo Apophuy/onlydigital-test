@@ -10,6 +10,7 @@ import IntervalControl from '../IntervalControl';
 import Slider from '../Slider';
 import { useWindowSize } from '../../utils/hooks';
 import Dots from '../Dots';
+import { fields2Ru } from '../../utils/constants';
 
 const Calendar: FC = () => {
   const { isMobile } = useWindowSize();
@@ -79,6 +80,7 @@ const Calendar: FC = () => {
         <div className={styles.leftTop}>
           <Title />
           <Interval data={currentInterval} />
+          {isMobile && <h3>{fields2Ru[currentInterval.field]}</h3>}
         </div>
         <div className={styles.rightTop} />
         <div className={styles.leftBottom}>
