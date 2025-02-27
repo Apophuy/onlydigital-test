@@ -14,17 +14,27 @@ import Dots from '../Dots';
 const Calendar: FC = () => {
   const { isMobile } = useWindowSize();
   const [currentIntervalIdx, setCurrentIntervalIdx] = useState(0);
+  const [showTitle, setShowTitle] = useState(true);
 
   const currentInterval = useMemo(() => {
     return testData[currentIntervalIdx];
   }, [currentIntervalIdx]);
 
-  const dotRefs = useRef<Record<number, null | HTMLSpanElement>>({});
-  const dotsRef = useRef<HTMLDivElement | null>(null);
+  const dotRefs = useRef<Record<number, HTMLSpanElement>>({});
+  const dotsRef = useRef<HTMLDivElement>(null);
+
+  let timeout: NodeJS.Timeout;
+
+  const tl = gsap.timeline({
+    onStart: () => setShowTitle(false),
+    onComplete: () => {
+      timeout = setTimeout(() => setShowTitle(true), 1000);
+    },
+  });
 
   const handleClick = (dotNumber: number) => {
     !isMobile &&
-      gsap.to(dotsRef.current, {
+      tl.to(dotsRef.current, {
         rotationZ: currentRotation(dotNumber, 'round'),
         duration: 1,
         ease: 'power1.inOut',
@@ -41,12 +51,13 @@ const Calendar: FC = () => {
   useEffect(() => {
     return () => {
       setCurrentIntervalIdx(0);
-      gsap.set(dotsRef.current, { clearProps: 'all' });
+      tl.set(dotsRef.current, { clearProps: 'all' });
       Object.values(dotRefs.current).forEach((dot) => {
         gsap.set(dot, {
           clearProps: 'all',
         });
       });
+      clearTimeout(timeout);
     };
   }, [isMobile]);
 
@@ -78,6 +89,7 @@ const Calendar: FC = () => {
             dotRefs={dotRefs}
             isMobile={isMobile}
             data={testData}
+            showTitle={showTitle}
           />
           <Slider events={currentInterval.events} isMobile={isMobile} />
           <IntervalControl

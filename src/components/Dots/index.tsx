@@ -11,9 +11,18 @@ type Props = {
   dotRefs: React.RefObject<Record<number, null | HTMLSpanElement>>;
   isMobile: boolean;
   data: TTestData[];
+  showTitle: boolean;
 };
 
-const Dots: FC<Props> = ({ dotsRef, handleClick, currentIntervalIdx, dotRefs, isMobile, data }) => {
+const Dots: FC<Props> = ({
+  dotsRef,
+  handleClick,
+  currentIntervalIdx,
+  dotRefs,
+  isMobile,
+  data,
+  showTitle,
+}) => {
   return (
     <div className={styles.round}>
       <div className={styles.dots} ref={dotsRef}>
@@ -37,7 +46,15 @@ const Dots: FC<Props> = ({ dotsRef, handleClick, currentIntervalIdx, dotRefs, is
             </div>
             {interval.id - 1 === currentIntervalIdx && !isMobile && (
               <div className={styles.dot__field}>
-                <span className={styles.dot__text}>{fields2Ru[interval.field]}</span>
+                <span
+                  className={cn(
+                    styles.dot__text,
+                    { [styles.dot__show]: showTitle },
+                    { [styles.dot__hide]: !showTitle }
+                  )}
+                >
+                  {fields2Ru[interval.field]}
+                </span>
               </div>
             )}
           </div>

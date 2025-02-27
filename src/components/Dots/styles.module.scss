@@ -99,6 +99,17 @@
     }
   }
 
+  &__show {
+    opacity: 1;
+    transition: opacity 300ms ease-out;
+  }
+
+  &__hide {
+    opacity: 0;
+
+    // transition: opacity 300ms ease-out;
+  }
+
   &__text {
     font-size: 0;
     @media (width >= 960px) {
