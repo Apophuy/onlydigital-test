@@ -1,4 +1,4 @@
-import { FC, useRef, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import styles from './styles.module.scss';
 import { Fields, TEvent } from '../../types';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -11,6 +11,7 @@ import 'swiper/css/a11y';
 import RoundedButton from '../RoundedButton';
 import cn from 'classnames';
 import { fields2Ru } from '../../utils/constants';
+import { gsap } from 'gsap';
 
 type Props = {
   events: TEvent[];
@@ -21,6 +22,7 @@ type Props = {
 const Slider: FC<Props> = ({ events, isMobile, field }) => {
   const [currentIdx, setCurrentIdx] = useState(0);
   const swiperRef = useRef<SwiperType>(null);
+  const sliderRef = useRef<HTMLDivElement>(null);
 
   const updateIndex = (swiper: SwiperType) => {
     if (!swiper) return;
@@ -29,8 +31,51 @@ const Slider: FC<Props> = ({ events, isMobile, field }) => {
 
   const slidesPerView = isMobile ? 2 : 3;
 
+  useEffect(() => {
+    if (sliderRef.current) {
+      gsap
+        .timeline()
+        .to(sliderRef.current, {
+          opacity: 0.5,
+          scale: 0.9,
+          duration: 0.3,
+          ease: 'power1.inOut',
+        })
+        .to(sliderRef.current, {
+          opacity: 2,
+          scale: 0.5,
+          duration: 0.2,
+          ease: 'power1.inOut',
+        })
+        .to(sliderRef.current, {
+          opacity: 0,
+          scale: 0,
+          duration: 0.1,
+          ease: 'power1.inOut',
+        })
+        .to(sliderRef.current, {
+          opacity: 2,
+          scale: 0.5,
+          duration: 0.2,
+          ease: 'power1.inOut',
+        })
+        .to(sliderRef.current, {
+          opacity: 0.5,
+          scale: 0.9,
+          duration: 0.2,
+          ease: 'power1.inOut',
+        })
+        .to(sliderRef.current, {
+          opacity: 1,
+          scale: 1,
+          duration: 0.3,
+          ease: 'power1.inOut',
+        });
+    }
+  }, [events]);
+
   return (
-    <div className={styles.slider}>
+    <div className={styles.slider} ref={sliderRef}>
       {isMobile && <h3 className={styles.field}>{fields2Ru[field]}</h3>}
       <RoundedButton
         dir='left'
