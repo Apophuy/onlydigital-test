@@ -1,8 +1,9 @@
-import { FC } from 'react';
+import { FC, useRef } from 'react';
 import styles from './styles.module.scss';
 import { TEvent } from '../../types';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Scrollbar, A11y } from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
+import { Swiper as SwiperType } from 'swiper';
 import Event from '../Event';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -14,10 +15,14 @@ type Props = {
 };
 
 const Slider: FC<Props> = ({ events, isMobile }) => {
+  const swiperRef = useRef<SwiperType>(null);
   return (
     <div className={styles.slider}>
       <div className={styles.events}>
         <Swiper
+          onBeforeInit={(swiper) => {
+            swiperRef.current = swiper;
+          }}
           modules={isMobile ? [] : [Navigation]}
           spaceBetween={isMobile ? 25 : 80}
           slidesPerView={isMobile ? 2 : 3}

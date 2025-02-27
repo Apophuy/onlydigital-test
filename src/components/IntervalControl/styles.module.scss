@@ -35,33 +35,6 @@
     }
   }
 
-  &__button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 25px;
-    height: 25px;
-    border: 1px solid #42567a;
-    border-radius: 50%;
-
-    &:hover,
-    &:active {
-      cursor: pointer;
-      background-color: #fff;
-    }
-
-    @media (width >= 960px) {
-      align-items: center;
-      width: 50px;
-      height: 50px;
-    }
-  }
-
-  &__icon {
-    transform: rotateZ(180deg);
-  }
-
   @media (width >= 960px) {
     gap: 0;
   }

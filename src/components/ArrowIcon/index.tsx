@@ -8,9 +8,9 @@ type Props = {
 
 const ArrowIcon: FC<Props> = ({ className }) => {
   return (
-    <div className={cn(styles.icon, className)}>
+    <div className={styles.icon}>
       <svg
-        className={styles.icon__svg}
+        className={cn(styles.icon__svg, className)}
         viewBox='0 0 10 14'
         fill='none'
         xmlns='http://www.w3.org/2000/svg'
