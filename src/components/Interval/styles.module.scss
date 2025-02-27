@@ -1,0 +1,34 @@
+.interval {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 57px;
+
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 76.46px;
+
+  &__start {
+    color: #3877ee;
+  }
+
+  &__end {
+    color: #f178b6;
+  }
+
+  @media (width >= 960px) {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translate(20%, 50%);
+
+    gap: 100px;
+
+    margin: 0;
+
+    font-size: 200px;
+    line-height: 160px;
+  }
+}

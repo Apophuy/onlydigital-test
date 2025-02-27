@@ -1,0 +1,17 @@
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__svg {
+    width: 3.12px;
+    height: 6.25px;
+    stroke: #42567a;
+    stroke-width: 2;
+
+    @media (width >= 960px) {
+      width: 10px;
+      height: 14px;
+    }
+  }
+}

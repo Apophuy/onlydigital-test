@@ -1,9 +1,13 @@
+import { JSX } from 'react';
+
 import styles from './styles.module.scss';
 
-function App() {
+import Calendar from '../components/Calendar';
+
+function App(): JSX.Element {
   return (
     <div className={styles.container}>
-      <p>Работает</p>
+      <Calendar />
     </div>
   );
 }

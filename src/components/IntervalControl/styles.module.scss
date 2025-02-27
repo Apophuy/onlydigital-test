@@ -1,0 +1,41 @@
+.container {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @media (width >= 960px) {
+    bottom: 295px;
+    left: 80px;
+  }
+}
+
+.interval {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &__data {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18.12px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8.33px;
+    align-items: center;
+
+    @media (width >= 960px) {
+      gap: 20px;
+      min-height: 90px;
+    }
+  }
+
+  @media (width >= 960px) {
+    gap: 0;
+  }
+}
