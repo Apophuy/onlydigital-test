@@ -39,8 +39,6 @@
 }
 
 @mixin dot-open {
-  cursor: pointer;
-
   transform-origin: 290px;
 
   display: flex;
@@ -63,6 +61,7 @@
   height: 6px;
   border-radius: 50%;
 
+  opacity: 0.4;
   background-color: #42567a;
 
   &__inner {
@@ -75,10 +74,44 @@
     }
   }
 
-  &:hover {
+  &:hover,
+  &:active {
+    cursor: pointer;
+    border: 1px solid #42567a;
     background-color: #f4f5f9;
     transition: all 300ms ease-out;
     @media (width >= 960px) {
+      @include dot-open;
+    }
+  }
+
+  &__field {
+    @media (width >= 960px) {
+      position: absolute;
+      transform: rotate(240deg) translateX(70px);
+
+      display: flex;
+      align-items: center;
+
+      width: 210px;
+      height: 40px;
+      padding-left: 90px;
+    }
+  }
+
+  &__text {
+    font-size: 0;
+    @media (width >= 960px) {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 30px;
+    }
+  }
+
+  &__active {
+    opacity: 1;
+    @media (width >= 960px) {
+      background-color: #f4f5f9;
       @include dot-open;
     }
   }
@@ -97,6 +130,8 @@
 
     font-size: 0;
 
+    opacity: 1;
+
     @for $i from 1 through 6 {
       &:nth-child(#{$i}) {
         transform: translateX(-263px) rotate(calc(360deg / 6 * ($i + 1)));
@@ -107,28 +142,8 @@
       }
     }
 
-    &__field {
-      position: absolute;
-      transform: rotate(240deg) translateX(70px);
-
-      display: flex;
-      align-items: center;
-
-      width: 210px;
-      height: 40px;
-      padding-left: 90px;
-    }
-
-    &__text {
-      font-size: 0;
-      @media (width >= 960px) {
-        font-size: 20px;
-        font-weight: 700;
-        line-height: 30px;
-      }
-    }
-
     &__active {
+      opacity: 1;
       background-color: #f4f5f9;
       @include dot-open;
     }
