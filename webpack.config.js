@@ -5,6 +5,7 @@ const devMode = process.env.NODE_ENV !== 'production';
 
 const BUILD_DIR = path.resolve(__dirname, 'build');
 const PUBLIC_DIR = path.resolve(__dirname, 'public');
+const SRC_DIR = path.resolve(__dirname, 'src');
 
 module.exports = {
   entry: path.resolve(__dirname, 'src', 'index.tsx'),
@@ -22,17 +23,28 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.(s[ac]|c)ss$/i,
+        test: /\.css$/,
+        use: [{ loader: devMode ? 'style-loader' : MiniCssExtractPlugin.loader }, 'css-loader'],
+      },
+      {
+        test: /\.((c|sa|sc)ss)$/i,
+        exclude: /node_modules/,
         use: [
-          MiniCssExtractPlugin.loader,
+          {
+            loader: devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          },
           {
             loader: 'css-loader',
             options: {
               esModule: true,
               modules: {
-                localIdentName: '[name]__[local]__[hash:base64:5]',
+                localIdentName: devMode
+                  ? '[local]__[hash:base64:5]'
+                  : '[name]__[local]__[hash:base64:5]',
                 namedExport: false,
+                exportLocalsConvention: 'as-is',
               },
+              importLoaders: 3,
             },
           },
           {
@@ -41,6 +53,13 @@ module.exports = {
               postcssOptions: {
                 plugins: [['postcss-preset-env']],
               },
+            },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+              implementation: require('sass'),
             },
           },
         ],
@@ -64,6 +83,7 @@ module.exports = {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.jsx'],
+    modules: [path.resolve(__dirname, 'src'), 'node_modules'],
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -72,11 +92,12 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: devMode ? '[name].css' : '[name].[contenthash].css',
+      chunkFilename: '[id].css',
       linkType: 'text/css',
     }),
   ],
   devServer: {
-    static: BUILD_DIR,
+    static: SRC_DIR,
     port: 3000,
     hot: 'only',
     compress: true,

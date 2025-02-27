@@ -1,0 +1,36 @@
+.event {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  width: 166px;
+  padding: 20px;
+
+  &__year {
+    font-family: 'Bebas Neue', serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.2px;
+    color: #3877ee;
+
+    @media (width >= 960px) {
+      font-size: 25px;
+      line-height: 30px;
+    }
+  }
+
+  &__text {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20.3px;
+
+    @media (width >= 960px) {
+      font-size: 20px;
+      line-height: 30px;
+    }
+  }
+
+  @media (width >= 960px) {
+    width: 320px;
+  }
+}
