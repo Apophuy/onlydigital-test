@@ -1,6 +1,6 @@
 {
   "name": "onlydigital-test",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "onlydigital test",
   "scripts": {
     "dev": "export NODE_ENV=development && webpack --mode development",
