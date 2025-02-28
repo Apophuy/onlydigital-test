@@ -50,6 +50,7 @@ const Calendar: FC = () => {
   };
 
   useEffect(() => {
+
     const reset = (): void => {
       setCurrentIntervalIdx(0);
       tl.set(dotsRef.current, { clearProps: 'all' });
