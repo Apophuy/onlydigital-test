@@ -40,39 +40,15 @@ const Slider: FC<Props> = ({ events, isMobile, field }) => {
       gsap
         .timeline()
         .to(sliderRef.current, {
-          opacity: 0.5,
-          scale: 0.9,
-          duration: 0.3,
-          ease: 'power1.inOut',
-        })
-        .to(sliderRef.current, {
-          opacity: 2,
-          scale: 0.5,
-          duration: 0.2,
-          ease: 'power1.inOut',
-        })
-        .to(sliderRef.current, {
           opacity: 0,
           scale: 0,
-          duration: 0.1,
-          ease: 'power1.inOut',
-        })
-        .to(sliderRef.current, {
-          opacity: 2,
-          scale: 0.5,
-          duration: 0.2,
-          ease: 'power1.inOut',
-        })
-        .to(sliderRef.current, {
-          opacity: 0.5,
-          scale: 0.9,
-          duration: 0.2,
+          duration: 0.9,
           ease: 'power1.inOut',
         })
         .to(sliderRef.current, {
           opacity: 1,
           scale: 1,
-          duration: 0.3,
+          duration: 0.9,
           ease: 'power1.inOut',
         });
     }
