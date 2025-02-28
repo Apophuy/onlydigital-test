@@ -50,7 +50,7 @@ const Calendar: FC = () => {
   };
 
   useEffect(() => {
-    return (): void => {
+    const reset = (): void => {
       setCurrentIntervalIdx(0);
       tl.set(dotsRef.current, { clearProps: 'all' });
       Object.values(dotRefs.current).forEach((dot) => {
@@ -59,6 +59,12 @@ const Calendar: FC = () => {
         });
       });
       clearTimeout(timeout);
+    };
+    if (isMobile) {
+      reset();
+    }
+    return (): void => {
+      reset();
     };
   }, [isMobile]);
 
