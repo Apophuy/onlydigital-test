@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 import { gsap } from 'gsap';
 import { FC, useEffect, useMemo, useRef, useState } from 'react';
 
 import styles from './styles.module.scss';
 
-import { currentRotation } from '../../utils';
+import { roundRotation, textRotation } from '../../utils';
 import { dataLength, testData } from '../../utils/data';
 import { useWindowSize } from '../../utils/hooks';
 import Dots from '../Dots';
@@ -36,21 +37,20 @@ const Calendar: FC = () => {
   const handleClick = (dotNumber: number): void => {
     !isMobile &&
       tl.to(dotsRef.current, {
-        rotationZ: currentRotation(dotNumber, 'round'),
+        rotationZ: roundRotation(dotNumber, dataLength),
         duration: 1,
         ease: 'power1.inOut',
       });
     !isMobile &&
       Object.entries(dotRefs.current).forEach(([key, dot]) => {
         gsap.to(dot, {
-          rotationZ: currentRotation(dotNumber, 'text', Number(key)),
+          rotationZ: textRotation(dotNumber, dataLength, Number(key)),
         });
       });
     setCurrentIntervalIdx(dotNumber - 1);
   };
 
   useEffect(() => {
-
     const reset = (): void => {
       setCurrentIntervalIdx(0);
       tl.set(dotsRef.current, { clearProps: 'all' });
