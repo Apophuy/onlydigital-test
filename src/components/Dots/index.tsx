@@ -4,7 +4,9 @@ import { FC } from 'react';
 import styles from './styles.module.scss';
 
 import { TTestData } from '../../types';
+import { dotNumberRotation, dotRotation, fieldRotation } from '../../utils';
 import { fields2Ru } from '../../utils/constants';
+import { dataLength } from '../../utils/data';
 
 type Props = {
   dotsRef: React.RefObject<HTMLDivElement | null>;
@@ -28,13 +30,14 @@ const Dots: FC<Props> = ({
   return (
     <div className={styles.round}>
       <div className={styles.dots} ref={dotsRef}>
-        {data.map((interval) => (
+        {data.map((interval, idx) => (
           <div
             key={`interval-${interval.id}`}
             className={cn(styles.dot, {
               [styles.dot__active]: interval.id - 1 === currentIntervalIdx,
             })}
             onClick={() => handleClick(interval.id)}
+            style={{ transform: dotRotation(isMobile, idx, dataLength) }}
           >
             <div className={styles.dot__inner}>
               <span
@@ -42,12 +45,16 @@ const Dots: FC<Props> = ({
                 ref={(el) => {
                   dotRefs.current[interval.id] = el;
                 }}
+                style={{ transform: dotNumberRotation(isMobile, idx, dataLength) }}
               >
                 {interval.id}
               </span>
             </div>
             {interval.id - 1 === currentIntervalIdx && !isMobile && (
-              <div className={styles.dot__field}>
+              <div
+                className={styles.dot__field}
+                style={{ transform: fieldRotation(isMobile, dataLength) }}
+              >
                 <span
                   className={cn(
                     styles.dot__text,

@@ -1,6 +1,8 @@
 import { Fields, TTestData } from '../types';
 
-export const testData: TTestData[] = [
+const length = 5;
+
+const dataArray: TTestData[] = [
   {
     id: 1,
     startYear: 1971,
@@ -239,5 +241,7 @@ export const testData: TTestData[] = [
     ],
   },
 ];
+
+export const testData = dataArray.slice(0, length);
 
 export const dataLength = testData.length;
