@@ -88,7 +88,6 @@
   &__field {
     @media (width >= 960px) {
       position: absolute;
-      transform: rotate(240deg) translateX(70px);
 
       display: flex;
       align-items: center;
@@ -142,16 +141,6 @@
     font-size: 0;
 
     opacity: 1;
-
-    @for $i from 1 through 6 {
-      &:nth-child(#{$i}) {
-        transform: translateX(-263px) rotate(calc(360deg / 6 * ($i + 1)));
-
-        .dot__number {
-          transform: rotate(calc(-360deg / 6 * ($i + 1)));
-        }
-      }
-    }
 
     &__active {
       opacity: 1;

@@ -41,13 +41,13 @@ const Slider: FC<Props> = ({ events, isMobile, field }) => {
         .timeline()
         .to(sliderRef.current, {
           opacity: 0,
-          scale: 0,
+          // scale: 0,
           duration: 0.9,
           ease: 'power1.inOut',
         })
         .to(sliderRef.current, {
           opacity: 1,
-          scale: 1,
+          // scale: 1,
           duration: 0.9,
           ease: 'power1.inOut',
         });
